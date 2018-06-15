@@ -25,12 +25,12 @@
 
 Name: %{repo}
 Version: 4.1.0
-Release: 0.1rc0%{?dist}
+Release: 1%{?dist}
 Summary: The GlusterFS management daemon (preview)
 License: GPLv2 or LGPLv3+
 URL: https://%{provider_prefix}
 %if 0%{?with_bundled}
-Source0: https://%{provider_prefix}/releases/download/v%{version}/%{name}-v%{version}-rc0-vendor.tar.xz
+Source0: https://%{provider_prefix}/releases/download/v%{version}/%{name}-v%{version}-0-vendor.tar.xz
 %else
 Source0: https://%{provider_prefix}/releases/download/v%{version}/%{name}-v%{version}-0.tar.xz
 %endif
@@ -80,7 +80,7 @@ Requires: /usr/bin/strings
 The new GlusterFS management framework and daemon, for GlusterFS-4.1.
 
 %prep
-%setup -q -n %{name}-v%{version}-rc0
+%setup -q -n %{name}-v%{version}-0
 
 %build
 export GOPATH=$(pwd):%{gopath}
@@ -123,6 +123,9 @@ install -D -p -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 %{_sysconfdir}/bash_completion.d/glustercli.sh
 
 %changelog
+* Fri Jun 15 2018 Niels de Vos <ndevos@redhat.com> - 4.1.0-1
+- GlusterD2 v4.1.0 GA
+
 * Mon Jun 4 2018 Niels de Vos <ndevos@redhat.com> - 4.1.0-0.1rc0
 - Release candidate 0 for GlusterD2 v4.1.0
 
